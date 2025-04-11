@@ -1,106 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-
-// Demo data for our blog posts
-const latestPosts = [
-  {
-    id: 1,
-    title: "10 Hidden Gems in Bali You Need to Visit",
-    excerpt: "Discover secluded beaches, authentic villages, and breathtaking waterfalls beyond the tourist hotspots of Bali.",
-    author: "Sarah Parker",
-    date: "May 15, 2024",
-    category: "Southeast Asia",
-    image: "/images/placeholder-1.jpg",
-    comments: 24,
-  },
-  {
-    id: 2,
-    title: "Budget Travel Guide: Europe on $50 a Day",
-    excerpt: "How to experience the best of European culture, cuisine and landmarks without breaking the bank.",
-    author: "Michael Chen",
-    date: "May 12, 2024",
-    category: "Budget Travel",
-    image: "/images/placeholder-2.jpg",
-    comments: 18,
-  },
-  {
-    id: 3,
-    title: "The Ultimate Safari Experience in Tanzania",
-    excerpt: "From the Serengeti to Ngorongoro Crater, how to plan the perfect wildlife adventure in East Africa.",
-    author: "David Okonkwo",
-    date: "May 10, 2024",
-    category: "Adventure",
-    image: "/images/placeholder-3.jpg",
-    comments: 15,
-  },
-];
-
-const topPosts = [
-  {
-    id: 4,
-    title: "Japan's Cherry Blossom Season: Complete Planning Guide",
-    excerpt: "Everything you need to know about timing your visit, best viewing spots, and cultural festivities during Sakura season.",
-    author: "Emma Tanaka",
-    date: "April 28, 2024",
-    category: "Seasonal Travel",
-    image: "/images/placeholder-4.jpg",
-    comments: 87,
-    views: 42650,
-  },
-  {
-    id: 5,
-    title: "Culinary Tour Through the Streets of Marrakech",
-    excerpt: "Explore the vibrant food scene of Morocco's most famous market city, from tagines to mint tea and everything in between.",
-    author: "Omar Hassan",
-    date: "April 22, 2024",
-    category: "Food Tourism",
-    image: "/images/placeholder-5.jpg",
-    comments: 61,
-    views: 38230,
-  },
-  {
-    id: 6,
-    title: "How We Traveled the World for a Year with Just Carry-On Luggage",
-    excerpt: "Practical packing tips, essential versatile items, and our minimalist approach to long-term travel.",
-    author: "Jessica & Tom Wilson",
-    date: "April 15, 2024",
-    category: "Travel Tips",
-    image: "/images/placeholder-6.jpg",
-    comments: 54,
-    views: 35780,
-  },
-];
-
-const testimonials = [
-  {
-    id: 1,
-    name: "Emily Rodriguez",
-    role: "Travel Photographer",
-    text: "BlogHub has been incredible for sharing my travel photography and connecting with fellow adventurers. The engagement from readers worldwide has opened up amazing collaboration opportunities!",
-    avatar: "/images/avatar-1.jpg",
-  },
-  {
-    id: 2,
-    name: "Alex Thompson",
-    role: "Adventure Blogger",
-    text: "As someone who documents extreme adventures, I love how BlogHub makes it easy to share my experiences with detailed maps and video embeds. The community feedback is always so supportive!",
-    avatar: "/images/avatar-2.jpg",
-  },
-  {
-    id: 3,
-    name: "Mei Lin",
-    role: "Culinary Travel Writer",
-    text: "Since I started posting my food-focused travel content on BlogHub, my audience has grown exponentially. The platform's features for highlighting recipes and restaurants are unmatched!",
-    avatar: "/images/avatar-3.jpg",
-  },
-];
+import { latestPosts, topPosts, testimonials } from "../lib/data";
 
 export default function Home() {
   return (
     <div className="min-h-screen relative">
       {/* Background Image */}
       <div className="fixed inset-0 z-0">
-        <Image 
+        <Image
           src="/images/backgroundimage.jpg"
           alt="Travel background"
           fill
@@ -171,49 +78,51 @@ export default function Home() {
                 <h2 className="text-3xl font-bold mb-2 text-amber-900">Latest Travel Stories</h2>
                 <p className="text-amber-700">Fresh adventures and insights from our global community</p>
               </div>
-              <a href="#" className="text-amber-600 font-medium hover:underline">View All</a>
+              <Link href="/posts" className="text-amber-600 font-medium hover:underline">View All</Link>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {latestPosts.map(post => (
                 <article key={post.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group">
-                  <div className="aspect-video bg-gray-200 relative overflow-hidden">
-                    <Image 
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover transition-transform group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-black/30 to-transparent z-10"></div>
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-medium rounded-full">{post.category}</span>
-                      <span className="text-amber-600 text-sm">{post.date}</span>
+                  <Link href={`/posts/${post.id}`} className="block">
+                    <div className="aspect-video bg-gray-200 relative overflow-hidden">
+                      <Image 
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-transform group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-black/30 to-transparent z-10"></div>
                     </div>
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-amber-600 transition text-amber-900">{post.title}</h3>
-                    <p className="text-amber-800 mb-4">{post.excerpt}</p>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-full bg-gray-200 relative overflow-hidden">
-                          <Image 
-                            src={`/images/avatar-${post.id % 3 + 1}.jpg`} 
-                            alt={post.author}
-                            fill
-                            className="object-cover"
-                          />
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-medium rounded-full">{post.category}</span>
+                        <span className="text-amber-600 text-sm">{post.date}</span>
+                      </div>
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-amber-600 transition text-amber-900">{post.title}</h3>
+                      <p className="text-amber-800 mb-4">{post.excerpt}</p>
+                      <div className="flex justify-between items-center">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-full bg-gray-200 relative overflow-hidden">
+                            <Image 
+                              src={`/images/avatar-${post.id % 3 + 1}.jpg`} 
+                              alt={post.author}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <span className="text-sm font-medium text-amber-800">{post.author}</span>
                         </div>
-                        <span className="text-sm font-medium text-amber-800">{post.author}</span>
-                      </div>
-                      <div className="flex items-center text-amber-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                        </svg>
-                        <span className="text-sm">{post.comments}</span>
+                        <div className="flex items-center text-amber-600">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                          </svg>
+                          <span className="text-sm">{post.comments.length}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 </article>
               ))}
             </div>
@@ -229,7 +138,7 @@ export default function Home() {
             </div>
             
             <div className="aspect-video max-w-4xl mx-auto bg-gray-200 rounded-xl overflow-hidden shadow-xl relative">
-              <Image
+            <Image
                 src="/images/placeholder-1.jpg"
                 alt="TravelHub demo video thumbnail"
                 fill
@@ -255,14 +164,15 @@ export default function Home() {
                 <h2 className="text-3xl font-bold mb-2 text-amber-900">Popular Destinations</h2>
                 <p className="text-amber-700">Most loved travel content from our community</p>
               </div>
-              <a href="#" className="text-amber-600 font-medium hover:underline">View All</a>
-            </div>
+              <Link href="/posts" className="text-amber-600 font-medium hover:underline">View All</Link>
+        </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {topPosts.map(post => (
                 <article key={post.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group border border-amber-100">
-                  <div className="aspect-video bg-gray-200 relative overflow-hidden">
-                    <Image 
+                  <Link href={`/posts/${post.id}`} className="block">
+                    <div className="aspect-video bg-gray-200 relative overflow-hidden">
+          <Image
                       src={post.image}
                       alt={post.title}
                       fill
@@ -285,7 +195,7 @@ export default function Home() {
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-gray-200 relative overflow-hidden">
-                          <Image 
+          <Image
                             src={`/images/avatar-${post.id % 3 + 1}.jpg`} 
                             alt={post.author}
                             fill
@@ -298,10 +208,11 @@ export default function Home() {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
                         </svg>
-                        <span className="text-sm">{post.comments}</span>
+                        <span className="text-sm">{post.comments.length}</span>
                       </div>
                     </div>
                   </div>
+                  </Link>
                 </article>
               ))}
             </div>
@@ -321,7 +232,7 @@ export default function Home() {
                 <div key={testimonial.id} className="bg-white p-6 rounded-xl shadow-md">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-full bg-gray-200 relative overflow-hidden">
-                      <Image 
+          <Image
                         src={testimonial.avatar} 
                         alt={testimonial.name}
                         fill
@@ -431,7 +342,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </footer>
+      </footer>
       </div>
     </div>
   );
