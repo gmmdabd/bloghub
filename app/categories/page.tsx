@@ -7,7 +7,7 @@ const categories = [
     id: "travel",
     name: "Travel & Tourism",
     description: "Explore destinations, travel tips, and cultural experiences",
-    icon: "🌎",
+    
     count: 127,
     popular: true,
     featuredImage: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1000",
@@ -16,7 +16,7 @@ const categories = [
     id: "food",
     name: "Food & Cuisine",
     description: "Recipes, culinary traditions, and food adventures around the world",
-    icon: "🍲",
+    
     count: 84,
     popular: true,
     featuredImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1000",
@@ -25,7 +25,7 @@ const categories = [
     id: "technology",
     name: "Technology",
     description: "Latest tech news, reviews, and digital trends",
-    icon: "💻",
+    
     count: 93,
     popular: true,
     featuredImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1000",
@@ -34,7 +34,7 @@ const categories = [
     id: "adventure",
     name: "Adventure & Outdoors",
     description: "Hiking, camping, and extreme sports experiences",
-    icon: "🏔️",
+    
     count: 68,
     popular: true,
     featuredImage: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1000",
