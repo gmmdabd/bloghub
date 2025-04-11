@@ -150,19 +150,12 @@ export default function Home() {
                 </div>
               </div>
               <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-orange-500/20 backdrop-blur-sm z-10 flex items-center justify-center">
-                  <div className="bg-[#f5f2e8]/90 p-8 rounded-xl shadow-lg max-w-sm">
-                    <h3 className="text-2xl font-bold mb-2 text-amber-900">Join Fellow Travelers</h3>
-                    <p className="text-amber-800 mb-4">Connect with explorers who share your passion for discovery.</p>
-                    <div className="flex -space-x-2">
-                      <div className="w-10 h-10 rounded-full bg-amber-500"></div>
-                      <div className="w-10 h-10 rounded-full bg-orange-500"></div>
-                      <div className="w-10 h-10 rounded-full bg-yellow-500"></div>
-                      <div className="w-10 h-10 rounded-full bg-amber-700"></div>
-                      <div className="w-10 h-10 rounded-full bg-[#f5f2e8] flex items-center justify-center text-amber-800 text-xs font-medium">+328</div>
-                    </div>
-                  </div>
-                </div>
+                <Image 
+                  src="/images/placeholder-1.jpg"
+                  alt="Travel inspiration"
+                  fill
+                  className="object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40"></div>
               </div>
             </div>

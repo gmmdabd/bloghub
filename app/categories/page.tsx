@@ -46,6 +46,7 @@ const categories = [
     icon: "📸",
     count: 52,
     popular: false,
+    featuredImage: "/images/placeholder-2.jpg",
   },
   {
     id: "arts",
@@ -54,6 +55,7 @@ const categories = [
     icon: "🎭",
     count: 45,
     popular: false,
+    featuredImage: "/images/placeholder-6.jpg",
   },
   {
     id: "history",
@@ -62,6 +64,7 @@ const categories = [
     icon: "🏛️",
     count: 36,
     popular: false,
+    featuredImage: "/images/placeholder-1.jpg",
   },
   {
     id: "wildlife",
@@ -70,6 +73,7 @@ const categories = [
     icon: "🦁",
     count: 41,
     popular: false,
+    featuredImage: "/images/placeholder-2.jpg",
   },
   {
     id: "budget",
@@ -78,6 +82,7 @@ const categories = [
     icon: "💰",
     count: 32,
     popular: false,
+    featuredImage: "/images/placeholder-3.jpg",
   },
   // Empty categories
   {
@@ -87,6 +92,7 @@ const categories = [
     icon: "🖥️",
     count: 0,
     popular: false,
+    featuredImage: "/images/placeholder-4.jpg",
   },
   {
     id: "mathematics",
@@ -95,6 +101,7 @@ const categories = [
     icon: "🔢",
     count: 0,
     popular: false,
+    featuredImage: "/images/placeholder-5.jpg",
   },
   {
     id: "physics",
@@ -103,6 +110,7 @@ const categories = [
     icon: "⚛️",
     count: 0,
     popular: false,
+    featuredImage: "/images/placeholder-6.jpg",
   },
   {
     id: "astronomy",
@@ -111,6 +119,7 @@ const categories = [
     icon: "🔭",
     count: 0,
     popular: false,
+    featuredImage: "/images/placeholder-1.jpg",
   },
   {
     id: "literature",
@@ -119,6 +128,7 @@ const categories = [
     icon: "📚",
     count: 0,
     popular: false,
+    featuredImage: "/images/placeholder-2.jpg",
   },
   {
     id: "philosophy",
@@ -127,8 +137,12 @@ const categories = [
     icon: "🧠",
     count: 0,
     popular: false,
+    featuredImage: "/images/placeholder-3.jpg",
   },
 ];
+
+// Define a default image to use as fallback if featuredImage is undefined
+const DEFAULT_IMAGE = "/images/placeholder-1.jpg";
 
 export default function CategoriesPage() {
   return (
@@ -207,7 +221,7 @@ export default function CategoriesPage() {
                   <Link href={`/categories/${category.id}`} key={category.id} className="block group">
                     <div className="relative h-48 rounded-xl overflow-hidden shadow-md">
                       <Image 
-                        src={category.featuredImage}
+                        src={category.featuredImage || DEFAULT_IMAGE}
                         alt={category.name}
                         fill
                         className="object-cover transition duration-300 group-hover:scale-105"
