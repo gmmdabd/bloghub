@@ -122,15 +122,16 @@ export default function Home() {
             
             <nav className="hidden md:flex space-x-6">
               <Link href="/" className="text-amber-900 hover:text-amber-600 font-medium transition">Home</Link>
+              <Link href="/categories" className="text-amber-900 hover:text-amber-600 font-medium transition">Categories</Link>
               
               {/* Categories Dropdown */}
               <div className="relative group">
-                <Link href="/categories" className="text-amber-900 hover:text-amber-600 font-medium transition flex items-center gap-1">
-                  Categories
+                <button className="text-amber-900 hover:text-amber-600 font-medium transition flex items-center gap-1">
+                  Browse Topics
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mt-0.5 transition-transform group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
-                </Link>
+                </button>
                 <div className="absolute left-0 top-full mt-1 w-56 bg-white rounded-lg shadow-lg overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-amber-100">
                   <Link href="/categories/travel" className="block px-4 py-2 text-amber-900 hover:bg-amber-50 border-b border-amber-100">Travel & Tourism</Link>
                   <Link href="/categories/food" className="block px-4 py-2 text-amber-900 hover:bg-amber-50 border-b border-amber-100">Food & Cuisine</Link>
