@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 // Demo data for our blog posts
 const latestPosts = [
   {
@@ -168,13 +170,14 @@ export default function Home() {
             {latestPosts.map(post => (
               <article key={post.id} className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group">
                 <div className="aspect-video bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-blue-600/10 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white/70 dark:bg-gray-800/70 flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                      </svg>
-                    </div>
-                  </div>
+                  <Image 
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-black/30 to-transparent z-10"></div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
@@ -185,7 +188,14 @@ export default function Home() {
                   <p className="text-gray-600 dark:text-gray-300 mb-4">{post.excerpt}</p>
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+                      <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                        <Image 
+                          src={`/images/avatar-${post.id % 3 + 1}.jpg`} 
+                          alt={post.author}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
                       <span className="text-sm font-medium">{post.author}</span>
                     </div>
                     <div className="flex items-center text-gray-500 dark:text-gray-400">
@@ -206,13 +216,19 @@ export default function Home() {
       <section className="py-16 bg-gray-50 dark:bg-gray-800 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">See BlogHub in Action</h2>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Watch how easy it is to create beautiful posts, engage with readers, and grow your audience.</p>
+            <h2 className="text-3xl font-bold mb-4">See TravelHub in Action</h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Watch how easy it is to create beautiful travel posts, engage with fellow travelers, and plan your next adventure.</p>
           </div>
           
           <div className="aspect-video max-w-4xl mx-auto bg-gray-200 dark:bg-gray-700 rounded-xl overflow-hidden shadow-xl relative">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button className="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center shadow-lg hover:bg-blue-700 transition">
+            <Image
+              src="/images/placeholder-1.jpg"
+              alt="TravelHub demo video thumbnail"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+              <button className="w-20 h-20 rounded-full bg-teal-600 flex items-center justify-center shadow-lg hover:bg-teal-700 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -238,8 +254,15 @@ export default function Home() {
             {topPosts.map(post => (
               <article key={post.id} className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group border border-gray-100 dark:border-gray-700">
                 <div className="aspect-video bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/10 to-blue-600/10 flex items-center justify-center">
-                    <div className="bg-white/80 dark:bg-gray-800/80 px-3 py-1 rounded-full text-sm font-medium text-blue-600 dark:text-blue-400">
+                  <Image 
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent z-10 flex items-center justify-center">
+                    <div className="bg-white/80 dark:bg-gray-800/80 px-3 py-1 rounded-full text-sm font-medium text-blue-600 dark:text-blue-400 z-20">
                       {post.views.toLocaleString()} views
                     </div>
                   </div>
@@ -253,7 +276,14 @@ export default function Home() {
                   <p className="text-gray-600 dark:text-gray-300 mb-4">{post.excerpt}</p>
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+                      <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+                        <Image 
+                          src={`/images/avatar-${post.id % 3 + 1}.jpg`} 
+                          alt={post.author}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
                       <span className="text-sm font-medium">{post.author}</span>
                     </div>
                     <div className="flex items-center text-gray-500 dark:text-gray-400">
@@ -282,7 +312,14 @@ export default function Home() {
             {testimonials.map(testimonial => (
               <div key={testimonial.id} className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-md">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-600"></div>
+                  <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-600 relative overflow-hidden">
+                    <Image 
+                      src={testimonial.avatar} 
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                   <div>
                     <h4 className="font-bold">{testimonial.name}</h4>
                     <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
