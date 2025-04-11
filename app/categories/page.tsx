@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Sample categories data with a wide range of topics
+// Sample categories data with a wide range of topics and Unsplash images
 const categories = [
   {
     id: "travel",
@@ -10,7 +10,7 @@ const categories = [
     icon: "🌎",
     count: 127,
     popular: true,
-    featuredImage: "/images/placeholder-1.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1000",
   },
   {
     id: "food",
@@ -19,7 +19,7 @@ const categories = [
     icon: "🍲",
     count: 84,
     popular: true,
-    featuredImage: "/images/placeholder-5.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1000",
   },
   {
     id: "technology",
@@ -28,7 +28,7 @@ const categories = [
     icon: "💻",
     count: 93,
     popular: true,
-    featuredImage: "/images/placeholder-4.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1000",
   },
   {
     id: "adventure",
@@ -37,7 +37,7 @@ const categories = [
     icon: "🏔️",
     count: 68,
     popular: true,
-    featuredImage: "/images/placeholder-3.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1000",
   },
   {
     id: "photography",
@@ -46,7 +46,7 @@ const categories = [
     icon: "📸",
     count: 52,
     popular: false,
-    featuredImage: "/images/placeholder-2.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=1000",
   },
   {
     id: "arts",
@@ -55,7 +55,7 @@ const categories = [
     icon: "🎭",
     count: 45,
     popular: false,
-    featuredImage: "/images/placeholder-6.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?q=80&w=1000",
   },
   {
     id: "history",
@@ -64,7 +64,7 @@ const categories = [
     icon: "🏛️",
     count: 36,
     popular: false,
-    featuredImage: "/images/placeholder-1.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=1000",
   },
   {
     id: "wildlife",
@@ -73,7 +73,7 @@ const categories = [
     icon: "🦁",
     count: 41,
     popular: false,
-    featuredImage: "/images/placeholder-2.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1504173010664-32509aeebb62?q=80&w=1000",
   },
   {
     id: "budget",
@@ -82,7 +82,7 @@ const categories = [
     icon: "💰",
     count: 32,
     popular: false,
-    featuredImage: "/images/placeholder-3.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1000",
   },
   // Empty categories
   {
@@ -92,7 +92,7 @@ const categories = [
     icon: "🖥️",
     count: 0,
     popular: false,
-    featuredImage: "/images/placeholder-4.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000",
   },
   {
     id: "mathematics",
@@ -101,7 +101,7 @@ const categories = [
     icon: "🔢",
     count: 0,
     popular: false,
-    featuredImage: "/images/placeholder-5.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000",
   },
   {
     id: "physics",
@@ -110,7 +110,7 @@ const categories = [
     icon: "⚛️",
     count: 0,
     popular: false,
-    featuredImage: "/images/placeholder-6.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?q=80&w=1000",
   },
   {
     id: "astronomy",
@@ -119,7 +119,7 @@ const categories = [
     icon: "🔭",
     count: 0,
     popular: false,
-    featuredImage: "/images/placeholder-1.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1000",
   },
   {
     id: "literature",
@@ -128,7 +128,7 @@ const categories = [
     icon: "📚",
     count: 0,
     popular: false,
-    featuredImage: "/images/placeholder-2.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=1000",
   },
   {
     id: "philosophy",
@@ -137,7 +137,77 @@ const categories = [
     icon: "🧠",
     count: 0,
     popular: false,
-    featuredImage: "/images/placeholder-3.jpg",
+    featuredImage: "https://images.unsplash.com/photo-1544133065-4e91797ff62b?q=80&w=1000",
+  },
+];
+
+// Sample top posts for categories
+const topPosts = [
+  {
+    id: 1,
+    title: "10 Hidden Gems in Bali You Need to Visit",
+    excerpt: "Discover secluded beaches, authentic villages, and breathtaking waterfalls beyond the tourist hotspots.",
+    author: "Sarah Parker",
+    date: "May 15, 2024",
+    category: "travel",
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1000",
+    views: 24500,
+    comments: 124,
+  },
+  {
+    id: 2,
+    title: "The Perfect Pasta: Secrets from Italian Chefs",
+    excerpt: "Learn the techniques and ingredients that make Italian pasta dishes truly authentic.",
+    author: "Marco Rossi",
+    date: "May 12, 2024",
+    category: "food",
+    image: "https://images.unsplash.com/photo-1556761223-4c4282c73f77?q=80&w=1000",
+    views: 18200,
+    comments: 87,
+  },
+  {
+    id: 3,
+    title: "Future of AI: What's Coming in 2025",
+    excerpt: "Experts predict the next breakthroughs in artificial intelligence and how they'll change our daily lives.",
+    author: "Alex Chen",
+    date: "May 10, 2024",
+    category: "technology",
+    image: "https://images.unsplash.com/photo-1677442135436-78faa6d2e394?q=80&w=1000",
+    views: 31700,
+    comments: 156,
+  },
+  {
+    id: 4,
+    title: "Hiking the Pacific Crest Trail: A Complete Guide",
+    excerpt: "Everything you need to know about tackling one of America's most challenging and rewarding hikes.",
+    author: "David Okonkwo",
+    date: "May 8, 2024",
+    category: "adventure",
+    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1000",
+    views: 15400,
+    comments: 68,
+  },
+  {
+    id: 5,
+    title: "Mastering Landscape Photography on Your Smartphone",
+    excerpt: "Simple techniques to capture breathtaking landscapes without expensive equipment.",
+    author: "Emma Tanaka",
+    date: "May 5, 2024",
+    category: "photography",
+    image: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=1000",
+    views: 12800,
+    comments: 42,
+  },
+  {
+    id: 6,
+    title: "Renaissance Art: A Journey Through Italian Masterpieces",
+    excerpt: "Explore the revolutionary techniques and stories behind Italy's most famous Renaissance works.",
+    author: "Isabella Conti",
+    date: "May 3, 2024",
+    category: "arts",
+    image: "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?q=80&w=1000",
+    views: 9500,
+    comments: 31,
   },
 ];
 
@@ -210,31 +280,94 @@ export default function CategoriesPage() {
         {/* Hero Section */}
         <section className="py-16 px-4 bg-[#f5f2e8]/80">
           <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <h1 className="text-4xl md:text-5xl font-bold text-amber-900 mb-4">Explore Topics</h1>
               <p className="text-xl text-amber-800 max-w-3xl mx-auto">Discover content across a variety of categories from travel and technology to mathematics and philosophy.</p>
             </div>
 
-            {/* Search Bar */}
+            {/* Category Selector Dropdown */}
             <div className="max-w-2xl mx-auto mb-16">
-              <div className="relative">
-                <input 
-                  type="text" 
-                  placeholder="Search categories..." 
-                  className="w-full px-6 py-4 bg-white rounded-full border border-amber-200 shadow-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-amber-900"
-                />
-                <button className="absolute right-3 top-1/2 -translate-y-1/2 bg-amber-600 text-white p-2 rounded-full hover:bg-amber-700 transition">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                </button>
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="relative flex-grow">
+                  <select 
+                    className="w-full px-6 py-4 bg-white rounded-lg border border-amber-200 shadow-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-amber-900 appearance-none"
+                  >
+                    <option value="">All Categories</option>
+                    {categories.map(cat => (
+                      <option key={cat.id} value={cat.id}>{cat.name}</option>
+                    ))}
+                  </select>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-amber-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="relative">
+                  <input 
+                    type="text" 
+                    placeholder="Search topics..." 
+                    className="w-full px-6 py-4 bg-white rounded-lg border border-amber-200 shadow-md focus:outline-none focus:ring-2 focus:ring-amber-500 text-amber-900"
+                  />
+                  <button className="absolute right-3 top-1/2 -translate-y-1/2 bg-amber-600 text-white p-2 rounded-full hover:bg-amber-700 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
 
-            {/* Popular Categories */}
+            {/* Top Posts Section */}
+            <div className="mb-16">
+              <h2 className="text-2xl font-bold text-amber-900 mb-6">Top Posts</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {topPosts.map(post => (
+                  <article key={post.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group">
+                    <div className="aspect-video bg-gray-200 relative overflow-hidden">
+                      <Image 
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-transform group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-tr from-black/30 to-transparent z-10"></div>
+                      <div className="absolute top-3 right-3 bg-white/90 px-3 py-1 rounded-full text-sm font-medium text-amber-700 z-20">
+                        {post.views.toLocaleString()} views
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="px-3 py-1 bg-amber-100 text-amber-800 text-xs font-medium rounded-full">
+                          {categories.find(cat => cat.id === post.category)?.name || post.category}
+                        </span>
+                        <span className="text-amber-600 text-sm">{post.date}</span>
+                      </div>
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-amber-600 transition text-amber-900">{post.title}</h3>
+                      <p className="text-amber-800 mb-4">{post.excerpt}</p>
+                      <div className="flex justify-between items-center">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-full bg-gray-200"></div>
+                          <span className="text-sm font-medium text-amber-800">{post.author}</span>
+                        </div>
+                        <div className="flex items-center text-amber-600">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                          </svg>
+                          <span className="text-sm">{post.comments}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            {/* Popular Categories Grid */}
             <div className="mb-16">
               <h2 className="text-2xl font-bold text-amber-900 mb-6">Popular Categories</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {categories.filter(cat => cat.popular).map((category) => (
                   <Link href={`/categories/${category.id}`} key={category.id} className="block group">
                     <div className="relative h-48 rounded-xl overflow-hidden shadow-md">
@@ -249,35 +382,6 @@ export default function CategoriesPage() {
                         <div className="text-4xl mb-1">{category.icon}</div>
                         <h3 className="text-xl font-bold group-hover:text-amber-300 transition">{category.name}</h3>
                         <p className="text-sm text-white/80">{category.count} posts</p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* All Categories */}
-            <div>
-              <h2 className="text-2xl font-bold text-amber-900 mb-6">All Categories</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {categories.filter(cat => !cat.popular).map((category) => (
-                  <Link href={`/categories/${category.id}`} key={category.id}>
-                    <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition group border border-amber-100">
-                      <div className="flex items-start gap-4">
-                        <div className="text-4xl">{category.icon}</div>
-                        <div>
-                          <h3 className="text-xl font-bold text-amber-900 group-hover:text-amber-600 transition">{category.name}</h3>
-                          <p className="text-amber-700 text-sm mb-2">{category.description}</p>
-                          {category.count > 0 ? (
-                            <span className="text-xs font-medium px-2 py-1 bg-amber-100 text-amber-800 rounded-full">
-                              {category.count} posts
-                            </span>
-                          ) : (
-                            <span className="text-xs font-medium px-2 py-1 bg-orange-100 text-orange-800 rounded-full">
-                              Be the first to post!
-                            </span>
-                          )}
-                        </div>
                       </div>
                     </div>
                   </Link>
