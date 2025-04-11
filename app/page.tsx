@@ -1,6 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
-
 // Demo data for our blog posts
 const latestPosts = [
   {
