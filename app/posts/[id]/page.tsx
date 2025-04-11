@@ -10,16 +10,39 @@ const allPosts = [...latestPosts, ...topPosts];
 
 // Function to get post data by ID
 async function getPostData(id: number) {
+  // Ensure the find method returns explicitly undefined if not found
   const post = allPosts.find((p) => p.id === id);
-  return post;
+  return post; // Will be undefined if not found
 }
 
-export default async function PostPage({ params }: { params: { id: string } }) {
+// Define interfaces for type safety
+interface PostPageParams {
+  id: string;
+}
+
+interface PostPageProps {
+  params: PostPageParams;
+}
+
+export default async function PostPage({ params }: PostPageProps) { // Use the defined interface
   const postId = parseInt(params.id, 10);
+
+  // Add check for NaN after parseInt
+  if (isNaN(postId)) {
+    console.error("Invalid post ID parameter:", params.id);
+    notFound();
+  }
+
   const post = await getPostData(postId);
 
   if (!post) {
     notFound(); // Show 404 if post doesn't exist
+  }
+
+  // Basic check for expected properties (optional, but good practice)
+  if (typeof post.content !== 'string' || !Array.isArray(post.comments)) {
+    console.error("Post data is malformed for ID:", postId);
+    notFound(); // Treat malformed data as not found
   }
 
   return (
@@ -76,17 +99,26 @@ export default async function PostPage({ params }: { params: { id: string } }) {
                   <span className="hidden md:inline">|</span>
                   <span>{post.date}</span>
                   <span className="hidden md:inline">|</span>
-                  <span>Category: <Link href={`/categories/${post.category.toLowerCase().replace(' ', '-')}`} className="font-medium text-amber-600 hover:underline">{post.category}</Link></span>
+                  {/* Added checks for category and adjusted link generation */}
+                  <span>Category: 
+                    <Link 
+                      href={`/categories/${post.category?.toLowerCase().replace(/\s+/g, '-') ?? 'general'}`} 
+                      className="font-medium text-amber-600 hover:underline"
+                    >
+                      {post.category ?? 'General'}
+                    </Link>
+                  </span>
                   <span className="hidden md:inline">|</span>
-                  <span>{post.views.toLocaleString()} views</span>
+                  {/* Added check for views */}
+                  <span>{(post.views ?? 0).toLocaleString()} views</span>
                 </div>
               </div>
 
               {/* Featured Image */}
               <div className="aspect-video relative rounded-lg overflow-hidden mb-8 shadow-md">
                 <Image 
-                  src={post.image}
-                  alt={post.title}
+                  src={post.image} // Assumes post.image is always a valid string path
+                  alt={post.title} // Assumes post.title is always a string
                   fill
                   className="object-cover"
                   priority
@@ -96,12 +128,13 @@ export default async function PostPage({ params }: { params: { id: string } }) {
               {/* Post Body */}
               <div 
                 className="prose prose-lg max-w-none prose-headings:text-amber-900 prose-a:text-amber-600 hover:prose-a:text-amber-800 prose-strong:text-amber-800 prose-img:rounded-lg prose-img:shadow-sm"
-                dangerouslySetInnerHTML={{ __html: post.content }}
+                dangerouslySetInnerHTML={{ __html: post.content }} // post.content must be a string
               />
 
               {/* Comments Section */}
               <div className="mt-12 pt-8 border-t border-amber-100">
-                <h2 className="text-2xl font-bold text-amber-900 mb-6">Comments ({post.comments.length})</h2>
+                {/* Added check for comments array */}
+                <h2 className="text-2xl font-bold text-amber-900 mb-6">Comments ({post.comments?.length ?? 0})</h2>
                 
                 {/* Add Comment Form */}
                 <div className="mb-8 p-4 bg-amber-50 rounded-lg border border-amber-100">
@@ -127,12 +160,13 @@ export default async function PostPage({ params }: { params: { id: string } }) {
 
                 {/* Existing Comments List */}
                 <div className="space-y-6">
-                  {post.comments.map((comment) => (
+                  {/* Added check for comments array before mapping */}
+                  {post.comments?.map((comment) => (
                     <div key={comment.id} className="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm border border-amber-100">
                       <div className="w-10 h-10 rounded-full bg-gray-200 relative overflow-hidden flex-shrink-0">
                         <Image 
-                          src={comment.avatar}
-                          alt={comment.author}
+                          src={comment.avatar} // Assumes comment.avatar is valid
+                          alt={comment.author} // Assumes comment.author is valid
                           fill
                           className="object-cover"
                         />
@@ -146,7 +180,7 @@ export default async function PostPage({ params }: { params: { id: string } }) {
                       </div>
                     </div>
                   ))}
-                  {post.comments.length === 0 && (
+                  {(post.comments?.length ?? 0) === 0 && (
                     <p className="text-amber-700 italic">No comments yet. Be the first to share your thoughts!</p>
                   )}
                 </div>
