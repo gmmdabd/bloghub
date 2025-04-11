@@ -141,9 +141,6 @@ const categories = [
   },
 ];
 
-// Define a default image to use as fallback if featuredImage is undefined
-const DEFAULT_IMAGE = "/images/placeholder-1.jpg";
-
 export default function CategoriesPage() {
   return (
     <div className="min-h-screen relative">
