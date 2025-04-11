@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BlogByte - Share Your Thoughts",
-  description: "A modern blog platform for sharing ideas, stories, and connecting with others",
+  title: "TravelHub - Your Global Travel Community",
+  description: "Discover stunning destinations, travel tips, and authentic experiences shared by travelers from around the world.",
 };
 
 export default function RootLayout({
