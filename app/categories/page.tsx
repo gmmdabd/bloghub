@@ -221,7 +221,7 @@ export default function CategoriesPage() {
                   <Link href={`/categories/${category.id}`} key={category.id} className="block group">
                     <div className="relative h-48 rounded-xl overflow-hidden shadow-md">
                       <Image 
-                        src={category.featuredImage || DEFAULT_IMAGE}
+                        src={category.featuredImage || "/images/placeholder-1.jpg"}
                         alt={category.name}
                         fill
                         className="object-cover transition duration-300 group-hover:scale-105"
